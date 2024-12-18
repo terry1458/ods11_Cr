@@ -34,7 +34,7 @@ initial_condition = 0.1 # 氧化物颗粒体积分数为 0.1
 [./phase_field_material_alpha] 
 type = GeneralizedPhaseFieldMaterial phase_field = alpha 
 pinning_effect = oxide_particles # 引入氧化物颗粒的影响 
-r = 0.1 # 假设氧化物颗粒的半径为0.1（可以根据实际情况调整）
+r = 0.005 # 假设氧化物颗粒的半径为0.1（可以根据实际情况调整）
 gamma_interface = 0.5 # 假设界面能为0.5（可以根据实际情况调整）
 phi = "oxide_particles" #氧化物颗粒的体积分数由oxide_particles变量决定
 zener_pinning_strength = "3 * gamma_interface * phi / (2 * r)" # Zener钉扎效应
@@ -45,7 +45,7 @@ zener_pinning_strength = "3 * gamma_interface * phi / (2 * r)" # Zener钉扎效�
 [./phase_field_material_gamma] 
 type = GeneralizedPhaseFieldMaterial phase_field = gamma 
 pinning_effect = oxide_particles # 引入氧化物颗粒的影响 
-r = 0.1 # 假设氧化物颗粒的半径为0.1（可以根据实际情况调整）
+r = 0.005 # 假设氧化物颗粒的半径为0.1（可以根据实际情况调整）
 gamma_interface = 0.5 # 假设界面能为0.5（可以根据实际情况调整）
 phi = "oxide_particles" #氧化物颗粒的体积分数由oxide_particles变量决定
 zener_pinning_strength = "3 * gamma_interface * phi / (2 * r)" # Zener钉扎效应
@@ -60,15 +60,18 @@ variable = alpha
 boundary = "left"  
 [../]  
 [./boundary_condition_2]    
-type = NeumannBC  # 无通量边界条件    variable = alpha    
+type = NeumannBC  # 无通量边界条件    
+variable = alpha    
 boundary = "right"  
 [../]  
 [./boundary_condition_3]    
-type = NeumannBC  # 无通量边界条件    variable = gamma    
+type = NeumannBC  # 无通量边界条件    
+variable = gamma    
 boundary = "left"  
 [../]  
 [./boundary_condition_4]    
-type = NeumannBC  # 无通量边界条件    variable = gamma    
+type = NeumannBC  # 无通量边界条件    
+variable = gamma    
 boundary = "right"  
 [../]
 [../]
